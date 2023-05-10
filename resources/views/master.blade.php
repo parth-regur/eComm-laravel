@@ -39,6 +39,15 @@
         line-height: 50px;
     }
 
+    .carousel-caption {
+        background-color: #00000070 !important;
+    }
+
+    /* .trending-items {
+        float: left;
+        width: 20%;
+    } */
+
     </style>
 
 </head>
