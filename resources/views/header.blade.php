@@ -34,7 +34,7 @@
 
 		<ul class="navbar-nav ml-auto">
 			<li class="nav-item">
-				<a class="nav-link" href="#">Cart({{$totalCartItems}})</a>
+				<a class="nav-link" href="/cartlist">Cart({{$totalCartItems}})</a>
 			</li>
 
 			@if(Session::has('user'))

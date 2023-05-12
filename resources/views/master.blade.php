@@ -11,44 +11,9 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 
-    <style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    body {
-        height: 100%;
-    }
-    
-    .container {
-        display: flex;
-        flex-direction: column;
-        min-height: 80vh;
-    }
-    
-    .content {
-        flex: 1;
-    }
-
-    .footer {
-        position:fixed;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        height: 50px; /* Adjust this value to match the height of the footer */
-        background-color: #f5f5f5;
-        border-top: 1px solid #ddd;
-        text-align: center;
-        line-height: 50px;
-    }
-
-    .carousel-caption {
-        background-color: #00000070 !important;
-    }
-
-    /* .trending-items {
-        float: left;
-        width: 20%;
-    } */
-
-    </style>
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
 </head>
 <body>
