@@ -19,12 +19,14 @@
 
 	<div class="collapse navbar-collapse" id="navbarSupportedContent">
 		<ul class="navbar-nav">
-			<li class="nav-item active">
+			<!-- <li class="nav-item active">
 				<a class="nav-link" href="#">Home</a>
-			</li>
+			</li> -->
+			@if(Session::has('user'))
 			<li class="nav-item">
 				<a class="nav-link" href="/myorders">Orders</a>
 			</li>
+			@endif
 		</ul>
 		
 		<form class="form-inline my-2 my-lg-0">
@@ -33,11 +35,10 @@
 		</form>
 
 		<ul class="navbar-nav ml-auto">
+			@if(Session::has('user'))
 			<li class="nav-item">
 				<a class="nav-link" href="/cartlist">Cart({{$totalCartItems}})</a>
 			</li>
-
-			@if(Session::has('user'))
 
 			<li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
