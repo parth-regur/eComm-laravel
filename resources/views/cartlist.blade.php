@@ -1,3 +1,7 @@
+@push('title')
+    <title>eComm - Cart List</title>
+@endpush
+
 @extends('master')
 @section('content')
 

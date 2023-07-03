@@ -1,3 +1,7 @@
+@push('title')
+    <title>eComm - Laravel</title>
+@endpush
+
 @extends('master')
 @section('content')
 

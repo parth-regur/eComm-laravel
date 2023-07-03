@@ -1,3 +1,7 @@
+@push('title')
+    <title>eComm - Login</title>
+@endpush
+
 @extends('master')
 @section('content')
 
