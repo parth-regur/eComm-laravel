@@ -1,3 +1,7 @@
+@push('title')
+    <title>eComm - Order Now</title>
+@endpush
+
 @extends('master')
 @section('content')
 

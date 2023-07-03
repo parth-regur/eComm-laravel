@@ -1,3 +1,7 @@
+@push('title')
+    <title>eComm - {{$product['name']}} Details</title>
+@endpush
+
 @extends('master')
 @section('content')
 

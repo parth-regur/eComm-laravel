@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\SearchController;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,3 +59,5 @@ Route::get('/layouts/form', function () {
 });
 
 Route::get('/filter',[ProductController::class,'myOrderFilter']);
+
+Route::get('/search',[SearchController::class,'search']);
