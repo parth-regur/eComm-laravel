@@ -6,9 +6,24 @@
         <div class="p-2">
             <div class="d-flex">
                 <h4>My Orders</h4>
-                <a href="/" class="btn btn-sm btn-primary ml-auto">Continue Shopping</a>
+
+                <form method="GET" class="ml-auto" action="{{ url('/filter') }}">
+                    <div class="dropdown open">
+                        <button class="btn btn-primary btn-sm dropdown-toggle" type="button" id="sortBy" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Sort By
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="sortBy">
+                            <button class="dropdown-item" type="submit" name="sort" value="newest">Newest</button>
+                            <button class="dropdown-item" type="submit" name="sort" value="high">Price (High to Low)</button>
+                            <button class="dropdown-item" type="submit" name="sort" value="low">Price (Low to High)</button>
+                            <button class="dropdown-item" type="submit" name="sort" value="old">Old</button>
+                        </div>
+                    </div>
+                </form>
+
             </div>
-            <div class="d-flex flex-row align-items-center pull-right"><span class="mr-1">Sort by:</span><span class="mr-1 font-weight-bold">Price</span><i class="fa fa-angle-down"></i></div>
+            
+                        
         </div>
 
         @foreach ($orders as $item)

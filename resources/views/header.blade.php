@@ -24,7 +24,7 @@
 			</li> -->
 			@if(Session::has('user'))
 			<li class="nav-item">
-				<a class="nav-link" href="/myorders">Orders</a>
+				<a class="nav-link" href="{{url('/')}}/myorders">Orders</a>
 			</li>
 			@endif
 		</ul>
@@ -37,7 +37,7 @@
 		<ul class="navbar-nav ml-auto">
 			@if(Session::has('user'))
 			<li class="nav-item">
-				<a class="nav-link" href="/cartlist">Cart({{$totalCartItems}})</a>
+				<a class="nav-link" href="{{url('/')}}/cartlist">Cart({{$totalCartItems}})</a>
 			</li>
 
 			<li class="nav-item dropdown">
@@ -45,17 +45,17 @@
 					{{Session::get('user')['name']}}
 				</a>
 				<div class="dropdown-menu">
-					<a class="dropdown-item" href="logout/">Logout</a>
+					<a class="dropdown-item" href="{{url('/')}}/logout/">Logout</a>
 				</div>
 			</li>
 
 			@else
 
 			<li class="nav-item">
-				<a class="nav-link" href="login/">Login</a>
+				<a class="nav-link" href="{{url('/')}}/login/">Login</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="register/">Register</a>
+				<a class="nav-link" href="{{url('/')}}/register/">Register</a>
 			</li>
 			@endif
 
