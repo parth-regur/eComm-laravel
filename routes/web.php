@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\TestController;
+use App\Http\Controllers\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,9 +31,9 @@ Route::get('/logout', function () {
     return redirect('login');
 });
 
-Route::view('/register','register');
+Route::get('/register',[RegisterController::class,'index']);
 Route::post('/login',[UserController::class,'login']);
-Route::post('register',[UserController::class,'register']);
+Route::post('/register',[UserController::class,'register']);
 Route::get('/',[ProductController::class,'index']);
 Route::get('/detail/{id}',[ProductController::class,'detail']);
 Route::post('add_to_cart',[ProductController::class,'addToCart']);
@@ -40,3 +42,19 @@ Route::get('remove_cart_item/{id}',[ProductController::class,'removeCartItem']);
 Route::get('order_now',[ProductController::class,'orderNow']);
 Route::post('orderplace/',[ProductController::class,'orderPlace']);
 Route::get('myorders/',[ProductController::class,'myOrders']);
+
+Route::get('/test',[TestController::class,'index']);
+
+Route::get('/layouts/about', function () {
+    return view('layouts.about');
+});
+
+Route::get('/layouts/test', function () {
+    return view('layouts.test');
+});
+
+Route::get('/layouts/form', function () {
+    return view('layouts.form');
+});
+
+Route::get('/filter',[ProductController::class,'myOrderFilter']);

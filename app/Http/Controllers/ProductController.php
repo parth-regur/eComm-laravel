@@ -50,15 +50,21 @@ class ProductController extends Controller
 
     function cartlist()
     {
-        $userId = Session::get('user')['id'];
+        if(Session::has('user'))
+        {
+            $userId = Session::get('user')['id'];
 
-        $products = DB::table('cart')
-        ->join('products','cart.productId','=','products.id')
-        ->where('cart.userId',$userId)
-        ->select('products.*','cart.id AS cartId')
-        ->get();
+            $products = DB::table('cart')
+            ->join('products','cart.productId','=','products.id')
+            ->where('cart.userId',$userId)
+            ->select('products.*','cart.id AS cartId')
+            ->get();
 
-        return view('cartlist',['products'=>$products]);
+            return view('cartlist',['products'=>$products]);
+        }
+        
+        return redirect('/');
+        
     }
 
     function removeCartItem($id)
@@ -95,6 +101,8 @@ class ProductController extends Controller
             $order->paymentMethod = $req->payment;
             $order->paymentStatus = "pending";
             $order->address = $req->address;
+            $order->created_at = DATE('Y-m-d H:i:s');
+            $order->updated_at = DATE('Y-m-d H:i:s');
             $order->save();
 
             Cart::where('userId',$userId)->delete();
@@ -105,14 +113,51 @@ class ProductController extends Controller
 
     function myOrders()
     {
-        $userId = Session::get('user')['id'];
+        if(Session::has('user'))
+        {
 
-        $orders =  DB::table('orders')
-        ->join('products','orders.productId','=','products.id')
-        ->where('orders.userId',$userId)
-        ->get();
+            $userId = Session::get('user')['id'];
 
-        return view('myorders',['orders'=>$orders]);
+            $orders =  DB::table('orders')
+            ->join('products','orders.productId','=','products.id')
+            ->where('orders.userId',$userId)
+            ->get();
+
+            return view('myorders',['orders'=>$orders]);
+        }
+
+        return redirect('/');
     }
+
+    public function myOrderFilter(Request $request)
+    {
+        if (Session::has('user')) {
+            $userId = Session::get('user')['id'];
+            
+            $query = DB::table('orders')
+                ->join('products', 'orders.productId', '=', 'products.id')
+                ->where('orders.userId', $userId);
+            
+            $sort = $request->input('sort');
+            
+            // Perform the necessary logic based on the selected filter option
+            if ($sort === 'newest') {
+                $query->orderBy('orders.created_at', 'desc');
+            } elseif ($sort === 'high') {
+                $query->orderBy('products.price', 'desc');
+            } elseif ($sort === 'low') {
+                $query->orderBy('products.price', 'asc');
+            } elseif ($sort === 'old') {
+                $query->orderBy('orders.created_at', 'asc');
+            }
+            
+            $orders = $query->get();
+            
+            return view('myorders', ['orders' => $orders]);
+        }
+
+        return redirect('/');
+    }
+
 
 }

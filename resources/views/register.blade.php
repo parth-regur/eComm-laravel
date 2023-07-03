@@ -4,7 +4,7 @@
 <div class="row mt-100">
     <div class="col-sm-4 mx-auto">
 
-        <form action="register" method="POST">
+        <form action="{{url('/')}}/register" method="POST">
             @csrf
             <div class="form-group">
                 <label for="exampleInputName">Username</label>
